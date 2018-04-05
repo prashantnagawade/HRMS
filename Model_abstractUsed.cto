@@ -1,0 +1,22 @@
+namespace org.whiz.hrms
+// ASSETS:-
+/*asset Leaves identified by assetID{
+  o String assetID default = "Leave"
+  o Integer noOfLeaves default = 10		//should be made abstract
+}*/
+
+// PARTICIPANTS:-
+ abstract participant member{
+  o String firstName
+  o String lastName
+  o Integer remainingLeaves
+ }
+ participant employee identified by id extends member{
+  o String id
+}
+// Transactions:-
+transaction applyForLeave {
+  --> member applier
+  o DateTime leaveDate default = "2018-04-01"
+  o Integer numberOfLeaves
+}
